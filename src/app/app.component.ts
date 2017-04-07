@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'a works!';
+
+  alert(message) {
+    alert(message);
+  }
 }
