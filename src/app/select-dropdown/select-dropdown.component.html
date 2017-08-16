@@ -1,0 +1,8 @@
+<div class="select-dropdown">
+  <div class="filter">
+    <input #filterInput (input)="handleFilterChange(filterInput.value)"/>
+  </div>
+  <ng-template [ngTemplateOutlet]="optionsTemplate"
+    [ngTemplateOutletContext]="{$implicit: select, options: filteredOptions, filter: filter}">
+  </ng-template>
+</div>

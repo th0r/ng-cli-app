@@ -1,0 +1,21 @@
+<div>
+  Selected value: {{ selected || '-' }}
+  <button (click)="opened = !opened">{{ opened ? 'Close' : 'Open' }}</button>
+  <button (click)="clearSelected()">Clear selection</button>
+  <a-select-dropdown *ngIf="opened"
+    [options]="options"
+    [optionsTemplate]="optionsTemplate || defaultOptionsTemplate">
+  </a-select-dropdown>
+</div>
+
+<ng-template #defaultOptionsTemplate let-select let-options="options" let-filter="filter">
+  <a-select-option *ngFor="let option of options; trackBy: getOptionKey"
+    class="option"
+    [ngClass]="{
+      disabled: select.isOptionDisabled(option),
+      selected: select.isOptionSelected(option)
+    }"
+    [option]="option">
+    <span [innerHtml]="option.label | textHighlight:filter:'option-highlight'"></span>
+  </a-select-option>
+</ng-template>

@@ -1,0 +1,13 @@
+.select-group {
+  & + & {
+    border-top: 1px solid #000;
+  }
+}
+
+.select-option {
+  display: block;
+}
+
+:host /deep/ .option-match-highlight {
+  text-decoration: underline;
+}

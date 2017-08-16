@@ -1,0 +1,23 @@
+<h2>Select with default template</h2>
+<a-select [options]="simpleOptions" selected="item3"></a-select>
+
+<h2>Select with option groups and loader</h2>
+<a-select [options]="groupedOptions"
+  selected="item1"
+  [optionsFilter]="filterOptionGroups">
+  <ng-template #options let-select let-groups="options" let-filter="filter">
+    <div *ngIf="loading; else optionGroups">Loading...</div>
+    <ng-template #optionGroups>
+      <div *ngFor="let group of groups; trackBy: getOptionGroupKey" class="select-group">
+        <div>{{ group.label }}:</div>
+        <a-select-option *ngFor="let option of group.options; trackBy: select.getOptionKey"
+          class="select-option"
+          [option]="option">
+          <span [innerHtml]="option.label | textHighlight:filter:'option-match-highlight'"></span>
+          <strong *ngIf="select.isOptionDisabled(option)">(disabled)</strong>
+          <strong *ngIf="select.isOptionSelected(option)">(selected)</strong>
+        </a-select-option>
+      </div>
+    </ng-template>
+  </ng-template>
+</a-select>

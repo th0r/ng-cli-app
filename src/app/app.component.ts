@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {GlobalService} from './global.service';
 
 @Component({
   selector: 'a-root',
@@ -6,9 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'a works!';
-
-  alert(message) {
-    alert(message);
-  }
+  constructor(
+    public global: GlobalService
+  ) {}
 }

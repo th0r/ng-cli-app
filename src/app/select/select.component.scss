@@ -1,0 +1,16 @@
+.option {
+  display: block;
+  font-weight: bold;
+}
+
+.option.disabled {
+  color: gray;
+}
+
+.option.selected {
+  color: red;
+}
+
+:host /deep/ .option-highlight {
+  text-decoration: underline;
+}
